@@ -2,7 +2,6 @@ package lippia.web.utils;
 
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
-import lippia.web.listeners.validator.AdValidator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,8 +10,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.time.Duration;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Utilities extends WebActionManager{
 
@@ -23,36 +20,6 @@ public class Utilities extends WebActionManager{
 	 */
 	public Utilities(WebDriver driver) {
 		Utilities.driver = driver;
-	}
-
-	public static void cerrarPopUp() {
-		WebDriver driver = DriverManager.getDriverInstance();
-
-		try {
-			if (driver.getCurrentUrl().contains("#google_vignette")) {
-				WebDriverWait wait = new WebDriverWait(driver, 5);
-				WebElement IframeExterno = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/ins/*/*[contains(@id, 'aswift_') and not(contains(@id, 'host'))]")));
-				driver.switchTo().frame(IframeExterno);
-				WebElement IframeInterno = driver.findElement(By.id("ad_iframe"));
-				driver.switchTo().frame(IframeInterno);
-				try {
-					WebElement cerrarPublicidad = driver.findElement(By.id("dismiss-button"));
-					cerrarPublicidad.click();
-				} catch (NoSuchElementException e) {
-					System.out.println("El botón 'dismiss-button' no está presente: " + e.getMessage());
-				}
-				driver.switchTo().defaultContent();
-				AdValidator adValidator = new AdValidator();
-				adValidator.validate(null, driver);
-			} else {
-				System.out.println("La URL actual no contiene la palabra '#google_vignette'.");
-			}
-		} catch (TimeoutException e) {
-			System.out.println("El iframe no está presente: " + e.getMessage());
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage());
-		}
-		sleep(1000);
 	}
 
 	public static void scrollTo2(String xpath) {
@@ -178,13 +145,6 @@ public class Utilities extends WebActionManager{
 			default:
 				throw new IllegalArgumentException("Locator type not supported: " + type);
 		}
-	}
-
-	public static double extraerValorNumerico(String precio) {
-		Pattern pattern = Pattern.compile("[^0-9.]");
-		Matcher matcher = pattern.matcher(precio);
-		String numericValue = matcher.replaceAll("");
-		return Double.parseDouble(numericValue);
 	}
 
 	public static WebElement waitByVariableXPath(String xpathVariable, String dynamicText, int time) {

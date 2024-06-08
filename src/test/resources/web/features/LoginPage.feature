@@ -1,30 +1,24 @@
 #Author: Adrian Matos
-@POC
-Feature: LoginPage of TV Azteca digital
+@Taller
+Feature: LoginPage of Demosite
 
   Background: Open the url in the browser
     Given The user is on home page
 
-  @login @login_success
-  Scenario Outline: Login success on TV Azteca digital
-    When I click on "Iniciar sesion" option
-    Then I click on "Iniciar con correo electronico" option
-    And I log in with email "<email>" and password "<password>"
-    Then I validate that I have logged in correctly
+  @register_login
+  Scenario Outline: Login success on DemoSite Guru with a new account
+    When I click on "Register" option
+    And I fill in the Contact Information with firstname "<firstname>", lastname "<lastname>", phone "<phone>", and email "<email>"
+    And I fill in the Mailing Information with address "<address>", city "<city>", state "<state>", postal code "<postal_code>", and country "<country>"
+    And I fill in the User Information with username "<username>" and password "<password>"
+    Then I should be on the successful registration page
+    When I click on "Sign On" button
+    And I log in with username "<username>" and password "<password>"
+    Then I should see the message "Login Successfully"
+
 
     Examples:
-      | email                | password  |
-      | mat.210920@gmail.com | test123A@ |
-      | fear@gmail.com       | test      |
+      | firstname | lastname | phone     | email          | address                | city | state | postal_code | country | username | password |
+      | Adrian    | Matos    | 999665447 | test@gmail.com | calle siempre viva 123 | Lima | Lima  | 15005       | PERU    | test     | test123  |
 
-  @login @login_failed
-  Scenario Outline: Login failed on TV Azteca digital
-    When I click on "Iniciar sesion" option
-    Then I click on "Iniciar con correo electronico" option
-    And I log in with email "<email>" and password "<password>"
-    Then I validate the error message "<message>"
-
-    Examples:
-      | email            | password  | message                                    |
-      | failed@gmail.com | test123A@ | El usuario o la contraseña son incorrectos |
 

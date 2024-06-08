@@ -7,8 +7,8 @@
 		<version>3.3.0.2</version>
 	</parent>
 
-	<groupId>Lippia-Web-Example-Project</groupId>
-	<artifactId>LippiaWebExampleProject</artifactId>
+	<groupId>Taller_Automatizacion</groupId>
+	<artifactId>Taller_Automatizacion</artifactId>
 	<version>1.0.0</version>
 	<name>crowdar_automation_web</name>
 
@@ -39,7 +39,7 @@
 		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' --tags ${cucumber.tags} ${cucumber.report}</crowdar.cucumber.option>
 
 		<!-- client project custom properties -->
-		<web-app.url>https://www.tvazteca.com/</web-app.url>
+		<web-app.url>https://demo.guru99.com/test/newtours/index.php</web-app.url>
 
 	</properties>
 	<profiles>
