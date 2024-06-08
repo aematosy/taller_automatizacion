@@ -34,7 +34,10 @@
 		<crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
 		<crowdar.extent.environment>Local</crowdar.extent.environment>
 		<crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:target/reports --plugin json:target/cucumber-reports/cucumber.json</cucumber.report>
+<!--
+		<cucumber.report>&#45;&#45;plugin lippia.web.reporters.CucumberReporter:target/reports &#45;&#45;plugin json:target/cucumber-reports/cucumber.json</cucumber.report>
+-->
+		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
 		<test-manager.report>--plugin lippia.web.reporters.TestManagerReporter:</test-manager.report>
 		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' --tags ${cucumber.tags} ${cucumber.report}</crowdar.cucumber.option>
 
