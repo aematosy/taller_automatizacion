@@ -34,7 +34,9 @@
 		<crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
 		<crowdar.extent.environment>Local</crowdar.extent.environment>
 		<crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
+		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter --plugin json:target/cucumber-reports/cucumber.json</cucumber.report>
+		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:target/reports --plugin json:target/cucumber-reports/cucumber.json</cucumber.report>
+
 		<test-manager.report>--plugin lippia.web.reporters.TestManagerReporter:</test-manager.report>
 		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' --tags ${cucumber.tags} ${cucumber.report}</crowdar.cucumber.option>
 
@@ -135,9 +137,12 @@
 			<artifactId>extentreports-cucumber4-adapter</artifactId>
 			<version>1.1.0.10</version>
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/com.github.luben/zstd-jni -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>3.8.0</version>
+			<classifier>javadoc</classifier>
+		</dependency>
 	</dependencies>
 	<build>
 		<filters>
