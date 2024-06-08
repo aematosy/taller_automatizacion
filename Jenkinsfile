@@ -15,7 +15,7 @@ pipeline {
                 script {
                     try {
                         // Ejecutar pruebas y generar informe JSON
-                        bat "mvn clean test -Dcucumber.filter.tags=${ESCENARIO} -Dcucumber.options=\"--plugin json:target/cucumber.json\""
+                        bat "mvn clean test -Dcucumber.filter.tags=${ESCENARIO}"
                         echo 'Ejecución de pruebas y generación de informe JSON exitosa'
                     } catch (ex) {
                         echo 'Caso de prueba fallido'
@@ -41,7 +41,7 @@ pipeline {
     }
     post {
         always {
-            echo 'This will always be executed'
+            echo 'This will always be ejecuted'
         }
     }
 }
