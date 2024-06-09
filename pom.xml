@@ -28,13 +28,13 @@
 		<!-- cucumber options -->
 		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
 		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
-		<cucumber.tags>@Smoke</cucumber.tags>
+		<cucumber.tags>@Taller</cucumber.tags>
 		<pretty.plugin>--plugin pretty</pretty.plugin>
 		<crowdar.cucumber.plugins>--plugin pretty --plugin com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter: --plugin com.crowdar.examples.listeners.CucumberListener:</crowdar.cucumber.plugins>
 		<crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
 		<crowdar.extent.environment>Local</crowdar.extent.environment>
 		<crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
+		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:target/reports --plugin json:target/cucumber-reports/cucumber.json</cucumber.report>
 		<test-manager.report>--plugin lippia.web.reporters.TestManagerReporter:</test-manager.report>
 		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' --tags ${cucumber.tags} ${cucumber.report}</crowdar.cucumber.option>
 
@@ -154,13 +154,6 @@
 						<suiteXmlFile>${runner}</suiteXmlFile>
 					</suiteXmlFiles>
 					<systemPropertyVariables>
-						<TEST_MANAGER_API_HOST></TEST_MANAGER_API_HOST>
-						<TEST_MANAGER_API_PORT></TEST_MANAGER_API_PORT>
-						<TEST_MANAGER_RUN_NAME></TEST_MANAGER_RUN_NAME>
-						<TEST_MANAGER_PROJECT_CODE></TEST_MANAGER_PROJECT_CODE>
-						<TEST_MANAGER_USERNAME></TEST_MANAGER_USERNAME>
-						<TEST_MANAGER_PASSWORD></TEST_MANAGER_PASSWORD>
-
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
