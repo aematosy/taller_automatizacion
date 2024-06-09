@@ -40,7 +40,8 @@ pipeline {
     }
     post {
     always {
-            }
+        echo 'Test finalizada'
+    }
     }
 }
 
