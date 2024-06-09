@@ -40,17 +40,6 @@ pipeline {
     }
     post {
     always {
-                publishTestResults serverAddress: 'https://grupoaxo.atlassian.net',
-                projectKey: 'GDC',
-                format: 'Cucumber',
-                filePath: 'target/cucumber-reports/cucumber.json',
-                autoCreateTestCases: true,
-                customTestCycle: [
-                    name: 'Regresion',
-                    description: 'Resultado de pruebas de regresion',
-                    jiraProjectVersion: '10001',
-                    folderId: '9840848',
-                ]
             }
     }
 }
