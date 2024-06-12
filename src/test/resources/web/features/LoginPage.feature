@@ -20,5 +20,3 @@ Feature: LoginPage of Demosite
     Examples:
       | firstname | lastname | phone     | email          | address                | city | state | postal_code | country | username | password |
       | Adrian    | Matos    | 999665447 | test@gmail.com | calle siempre viva 123 | Lima | Lima  | 15005       | PERU    | test     | test123  |
-
-
